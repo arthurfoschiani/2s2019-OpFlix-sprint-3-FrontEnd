@@ -7,6 +7,9 @@ import Platafoma from './Pages/Plataforma/Plataforma';
 import Login from './Pages/Login/Login';
 import Categoria from './Pages/Categoria/Categoria';
 import CadastrarCliente from './Pages/CadastrarCliente/CadastrarCliente';
+import CadastrarAdmin from './Pages/CadastrarAdmin/CadastrarAdmin';
+import ListarLancamentos from './Pages/ListarLançamento/ListarLancamento';
+import CadastrarLancamento from './Pages/CadastrarLançamento/CadastrarLancamento';
 import * as serviceWorker from './serviceWorker';
 
 const RotaPrivada = ({component: Component}) =>(
@@ -34,6 +37,9 @@ const routing = (
                 <Route path='/plataformas' component={Platafoma}/>
                 <Route path='/categorias' component={Categoria}/>
                 <Route path='/cadastrarcliente' component={CadastrarCliente}/>
+                <Route path='/cadastraradministrador' component={CadastrarAdmin}/>
+                <Route path='/listarlancamentos' component={ListarLancamentos}/>
+                <Route path='/cadastrarlancamento' component={CadastrarLancamento}/>
             </Switch>
         </div>
     </Router>

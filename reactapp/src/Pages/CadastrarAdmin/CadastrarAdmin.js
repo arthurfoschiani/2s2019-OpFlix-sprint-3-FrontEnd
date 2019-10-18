@@ -3,7 +3,7 @@ import Axios from 'axios';
 import logo from '../../Assets/img/Logo.jpg';
 import imgBackGround from '../../Assets/img/Retângulo 3.png';
 
-class CadastrarCliente extends Component{
+class CadastrarAdmin extends Component{
 
     constructor(){
         super();
@@ -13,30 +13,22 @@ class CadastrarCliente extends Component{
             Senha: '',
             Telefone: '',
             CPF: '',
-            DataNascimento: ''
+            DataNascimento: '',
+            TipoUsuario: ''
         };
     }
-
-    // componentDidMount () {
-    //     Axios.get('http://localhost:5000/api/usuarios')
-    //     .then(data => {
-    //         this.setState({Lista: data.data});
-    //     })
-    //     .catch(erro => {
-    //         console.log(erro)
-    //     });
-    // }
 
     adicionarItem = (event) => {
         event.preventDefault();
         console.log(this.state.li);
-        Axios.post('http://localhost:5000/api/usuarios/CadastrarCliente', {
+        Axios.post('http://localhost:5000/api/usuarios', {
             NomeUsuario: this.state.Nome, 
             EmailUsuario: this.state.Email,
             SenhaUsuario: this.state.Senha,
             Telefone: this.state.Telefone,
             Cpf: this.state.CPF,
-            DataDeNascimento: this.state.DataNascimento
+            DataDeNascimento: this.state.DataNascimento,
+            TipoUsuario: this.state.TipoUsuario
         })
         .then(response =>{console.log(response)})
         .catch(erro => { 
@@ -69,6 +61,10 @@ class CadastrarCliente extends Component{
         this.setState({DataNascimento: event.target.value})
         console.log(this.state);
     }
+    atalizarTipoUsuario = (event) => {
+        this.setState({TipoUsuario: event.target.value})
+        console.log(this.state)
+    }
 
     render() {
         return(
@@ -91,6 +87,11 @@ class CadastrarCliente extends Component{
                             <input type="text" placeholder="Telefone" onInput={this.atualizarTelefone}></input>
                             <input type="text" placeholder="CPF" onInput={this.atualizarCPF}></input>
                             <input type="text" placeholder="Data de nascimento" onInput={this.atualizarData}></input>
+                            <select onInput={this.atalizarTipoUsuario}> 
+                                <option selected>Escolha...</option>
+                                <option value='1'>Administrador</option>
+                                <option value='2'>Cliente</option>
+                            </select>
                             <button onClick={this.adicionarItem}>Cadastrar</button>
                         </form>
                     </div>
@@ -100,4 +101,4 @@ class CadastrarCliente extends Component{
     }
 }
 
-export default CadastrarCliente
+export default CadastrarAdmin
