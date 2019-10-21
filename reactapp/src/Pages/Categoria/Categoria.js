@@ -17,7 +17,11 @@ class Categoria extends Component {
     }
 
     listaAtualizada = () => {
-        fetch('http://localhost:5000/api/categorias')
+        fetch('http://localhost:5000/api/categorias', {
+            headers:{
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-opflix')
+            }
+        })
             .then(response => response.json())
             .then(data => this.setState({ lista: data}));
     }
@@ -29,6 +33,7 @@ class Categoria extends Component {
             method: "POST",
             body: JSON.stringify({ categoria1: this.state.categoria1 }),
             headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-opflix'),
                 "Content-Type": "application/json"
             }
         })

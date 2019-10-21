@@ -37,6 +37,12 @@ class CadastrarCliente extends Component{
             Telefone: this.state.Telefone,
             Cpf: this.state.CPF,
             DataDeNascimento: this.state.DataNascimento
+        }, {
+            headers: {
+                'Content-Type' : 'application/json',
+                'Accept' : 'application/json',
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-opflix')
+            }
         })
         .then(response =>{console.log(response)})
         .catch(erro => { 

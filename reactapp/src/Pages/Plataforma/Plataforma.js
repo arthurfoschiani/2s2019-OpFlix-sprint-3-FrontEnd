@@ -18,7 +18,11 @@ class Plataforma extends Component{
     }
 
     listaAtualizada = () => {
-        fetch('http://localhost:5000/api/plataformas')
+        fetch('http://localhost:5000/api/plataformas', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-opflix')
+            }
+        })
             .then(response => response.json())
             .then(data => this.setState({ lista: data}));
     }
@@ -30,6 +34,7 @@ class Plataforma extends Component{
             method: "POST",
             body: JSON.stringify({ plataforma1: this.state.plataforma1 }),
             headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-opflix'),
                 "Content-Type": "application/json"
             }
         })

@@ -10,6 +10,8 @@ import CadastrarCliente from './Pages/CadastrarCliente/CadastrarCliente';
 import CadastrarAdmin from './Pages/CadastrarAdmin/CadastrarAdmin';
 import ListarLancamentos from './Pages/ListarLançamento/ListarLancamento';
 import CadastrarLancamento from './Pages/CadastrarLançamento/CadastrarLancamento';
+import ListarUsuarios from './Pages/ListarUsuários/ListarUsuario';
+import NaoEncontrado from './Pages/NãoEncontrado/NaoEncontrado';
 import * as serviceWorker from './serviceWorker';
 
 const RotaPrivada = ({component: Component}) =>(
@@ -34,12 +36,14 @@ const routing = (
             <Switch>
                 <Route exact path='/' component={App} />
                 <Route path='/login' component={Login} />
-                <Route path='/plataformas' component={Platafoma}/>
-                <Route path='/categorias' component={Categoria}/>
-                <Route path='/cadastrarcliente' component={CadastrarCliente}/>
-                <Route path='/cadastraradministrador' component={CadastrarAdmin}/>
-                <Route path='/listarlancamentos' component={ListarLancamentos}/>
-                <Route path='/cadastrarlancamento' component={CadastrarLancamento}/>
+                <RotaPrivada path='/plataformas' component={Platafoma}/>
+                <RotaPrivada path='/categorias' component={Categoria}/>
+                <RotaPrivada path='/cadastrarcliente' component={CadastrarCliente}/>
+                <RotaPrivada path='/cadastraradministrador' component={CadastrarAdmin}/>
+                <RotaPrivada path='/listarlancamentos' component={ListarLancamentos}/>
+                <RotaPrivada path='/cadastrarlancamento' component={CadastrarLancamento}/>
+                <RotaPrivada path='/Usuarios' component={ListarUsuarios}/>
+                <Route component={NaoEncontrado}/>
             </Switch>
         </div>
     </Router>

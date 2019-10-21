@@ -29,6 +29,12 @@ class CadastrarAdmin extends Component{
             Cpf: this.state.CPF,
             DataDeNascimento: this.state.DataNascimento,
             TipoUsuario: this.state.TipoUsuario
+        }, {
+            headers: {
+                'Content-Type' : 'application/json',
+                'Accept' : 'application/json',
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-opflix')
+            }
         })
         .then(response =>{console.log(response)})
         .catch(erro => { 

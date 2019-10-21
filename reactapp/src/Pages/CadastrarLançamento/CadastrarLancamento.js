@@ -23,14 +23,20 @@ class CadastrarLancamento extends Component {
     }
 
     componentDidMount() {
-        Axios.get('http://localhost:5000/api/categorias')
+        Axios.get('http://localhost:5000/api/categorias', {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-opflix')  
+            }})
             .then(data => {
                 this.setState({ categoria: data.data });
             })
             .catch(erro => {
                 console.log(erro);
             });
-        Axios.get('http://localhost:5000/api/plataformas')
+        Axios.get('http://localhost:5000/api/plataformas', {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-opflix')  
+            }})
             .then(data => {
                 this.setState({ plataforma: data.data });
             })
@@ -52,6 +58,12 @@ class CadastrarLancamento extends Component {
             idCategoria: this.state.categoriaSelecionada,
             idDiretor: this.state.diretorSelecionado,
             idPlataforma: this.state.plataformaSelecionada
+        }, {
+            headers: {
+                'Content-Type' : 'application/json',
+                'Accept' : 'application/json',
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-opflix')
+            }
         })
             .then(response => { console.log(response) })
             .catch(erro => {
