@@ -11,12 +11,14 @@ class CadastrarLancamento extends Component {
             tempoDuracao: '',
             dataLancamento: '',
             descricao: '',
-            tipoMidia1: '',
+            tipoMidia1: [],
             categoria: [],
-            diretor: [],
+            diretor1: [],
             plataforma: [],
             plataformaSelecionada: '',
-            categoriaSelecionado: ''
+            categoriaSelecionado: '',
+            tipoMidiaSelecionado: '',
+            diretorSelecionado: ''
         };
     }
 
@@ -39,22 +41,22 @@ class CadastrarLancamento extends Component {
 
     adicionarItem = (event) => {
         event.preventDefault();
-        console.log(this.state.li);
-        Axios.post('http://localhost:5000/api/usuarios', {
+        console.log('state', this.state);
+        Axios.post('http://localhost:5000/api/lancamentos', {
             nomeMidia: this.state.nomeMidia,
             sinopse: this.state.sinopse,
             tempoDuracao: this.state.tempoDuracao,
             dataLancamento: this.state.dataLancamento,
             descricao: this.state.descricao,
-            tipoMidia1: this.state.tipoMidia1,
-            categoria1: this.state.categoria,
-            diretor1: this.state.diretor,
-            plataforma1: this.state.plataforma
+            idTipoMidia: this.state.tipoMidiaSelecionado,
+            idCategoria: this.state.categoriaSelecionada,
+            idDiretor: this.state.diretorSelecionado,
+            idPlataforma: this.state.plataformaSelecionada
         })
             .then(response => { console.log(response) })
             .catch(erro => {
                 this.setState({ erro: "Não foi possível cadastrar" });
-                console.log(erro);
+                console.log('error', erro);
             });
     }
 
@@ -79,7 +81,7 @@ class CadastrarLancamento extends Component {
         console.log(this.state);
     }
     atualizarTipoMidia = (event) => {
-        this.setState({ tipoMidia1: event.target.value })
+        this.setState({ tipoMidiaSelecionado: event.target.value })
         console.log(this.state);
     }
     atalizarCategoria = (event) => {
@@ -87,7 +89,7 @@ class CadastrarLancamento extends Component {
         console.log(this.state)
     }
     atalizarDiretor = (event) => {
-        this.setState({ diretor: event.target.value })
+        this.setState({ diretorSelecionado: event.target.value })
         console.log(this.state)
     }
     atalizarPlataforma = (event) => {
@@ -103,10 +105,15 @@ class CadastrarLancamento extends Component {
                     <input type="text" placeholder="Titulo" onInput={this.atualizarNome}></input>
                     <input type="text" placeholder="Sinopse" onInput={this.atualizarSinopse}></input>
                     <input type="text" placeholder="Tempo de duração" onInput={this.atualizarTempoDuração}></input>
-                    <input type="text" placeholder="Data de lançamento" onInput={this.atualizarDataLancamento}></input>
+                    <input type="text" placeholder="Data de lançamento" onChange={this.atualizarDataLancamento} ></input>
                     <input type="text" placeholder="Descrição" onInput={this.atualizarDescricao}></input>
-                    <input type="text" placeholder="Diretor" onInput={this.atalizarDiretor}></input>
-                    <select onInput={this.atualizarTipoMidia}>
+                    <select onInput={this.atalizarDiretor} values={this.state.diretorSelecionado}>
+                        <option selected>Diretor...</option>
+                        <option value='1'>David Crane</option>
+                        <option value='2'>George Lucas</option>
+                        <option value='3'>Adam Horowitz</option>
+                    </select>
+                    <select onInput={this.atualizarTipoMidia} values={this.state.tipoMidiaSelecionado}>
                         <option selected>Tipo da mídia...</option>
                         <option value='1'>Série</option>
                         <option value='2'>Filme</option>
