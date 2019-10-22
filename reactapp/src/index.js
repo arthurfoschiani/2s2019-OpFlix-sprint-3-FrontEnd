@@ -1,4 +1,4 @@
-import {Route, Link, BrowserRouter as Router, Switch, Redirect} from 'react-router-dom';
+import {Route, Link, BrowserRouter, Router, Switch, Redirect} from 'react-router-dom';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -12,9 +12,25 @@ import ListarLancamentos from './Pages/ListarLançamento/ListarLancamento';
 import CadastrarLancamento from './Pages/CadastrarLançamento/CadastrarLancamento';
 import ListarUsuarios from './Pages/ListarUsuários/ListarUsuario';
 import NaoEncontrado from './Pages/NãoEncontrado/NaoEncontrado';
+import DashBoardAdmin from './Pages/DashBoardAdmin/DashBoardAdmin';
+import DashBoardCliente from './Pages/DashBoardCliente/DashBoardCliente';
 import * as serviceWorker from './serviceWorker';
+import { parseJwt } from './Services/auth';
 
-const RotaPrivada = ({component: Component}) =>(
+const RotaPrivada = ({ component: Component}) => (
+    <Route 
+        render={
+            props =>
+                parseJwt().Permissao === '2' ? (
+                    <DashBoardCliente {...props} />
+                ) : (
+                    <DashBoardAdmin {...props} />
+                )
+        }
+    />
+);
+
+const QualquerUsuario = ({component: Component}) =>(
     <Route
         render={props =>
             localStorage.getItem("usuario-opflix") !== null ? (
@@ -28,25 +44,45 @@ const RotaPrivada = ({component: Component}) =>(
     />        
 );
 
+const PermissaoADM = ({ component: Component }) => (
+    <Route
+        render={
+            props =>
+            localStorage.getItem("usuario-opflix") !== null ? (
+                parseJwt().Permissao === "1" ? (
+                    <Component {...props} />
+                ) : (
+                        <NaoEncontrado/>
+                    )
+            )
+                    : (
+                        <Redirect 
+                            to={{ pathname: "/login", state: {from: props.location}}}
+                        />
+                    )
+        }
+    />
+);
 
 
 const routing = (
-    <Router>
+    <BrowserRouter>
         <div>
             <Switch>
                 <Route exact path='/' component={App} />
                 <Route path='/login' component={Login} />
-                <RotaPrivada path='/plataformas' component={Platafoma}/>
-                <RotaPrivada path='/categorias' component={Categoria}/>
-                <RotaPrivada path='/cadastrarcliente' component={CadastrarCliente}/>
-                <RotaPrivada path='/cadastraradministrador' component={CadastrarAdmin}/>
-                <RotaPrivada path='/listarlancamentos' component={ListarLancamentos}/>
-                <RotaPrivada path='/cadastrarlancamento' component={CadastrarLancamento}/>
-                <RotaPrivada path='/Usuarios' component={ListarUsuarios}/>
+                <PermissaoADM path='/plataformas' component={Platafoma}/>
+                <PermissaoADM path='/categorias' component={Categoria}/>
+                <Route path='/cadastrarcliente' component={CadastrarCliente}/>
+                <PermissaoADM path='/cadastraradministrador' component={CadastrarAdmin}/>
+                <QualquerUsuario path='/listarlancamentos' component={ListarLancamentos}/>
+                <PermissaoADM path='/cadastrarlancamento' component={CadastrarLancamento}/>
+                <PermissaoADM path='/usuarios' component={ListarUsuarios}/>
+                <RotaPrivada path='/dashboard' component={DashBoardCliente}/>
                 <Route component={NaoEncontrado}/>
             </Switch>
         </div>
-    </Router>
+    </BrowserRouter>
 )
 
 ReactDOM.render(routing, document.getElementById('root'));

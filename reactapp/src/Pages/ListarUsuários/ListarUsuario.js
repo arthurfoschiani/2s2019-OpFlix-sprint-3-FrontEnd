@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import Axios from 'axios';
 import logo from '../../Assets/img/Logo.jpg';
+import {Link} from 'react-router-dom';
 
 class ListarUsuario extends Component{
     
@@ -32,7 +33,7 @@ class ListarUsuario extends Component{
                 <nav>
                     <ul>
                         <li><img src={logo} alt=""/></li>
-                        <li><a href="#">Login</a></li>
+                        <li><Link to='/login'>Login</Link></li>
                     </ul>
                 </nav>
                 <div>

@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import Axios from 'axios';
 import logo from '../../Assets/img/Logo.jpg';
 import imgBackGround from '../../Assets/img/Retângulo 3.png';
+import {Link} from 'react-router-dom';
 
 class CadastrarAdmin extends Component{
 
@@ -78,13 +79,10 @@ class CadastrarAdmin extends Component{
                 <nav>
                     <ul>
                         <li><img src={logo} alt=""/></li>
-                        <li><a href="#">Login</a></li>
+                        <li><Link to='/login'>Login</Link></li>
                     </ul>
                 </nav>
                 <div>
-                    <div>
-                        <img src={imgBackGround} alt=""/>
-                    </div>
                     <div>
                         <form action="">
                             <input type="text" placeholder="Nome" onInput={this.atualizarNome}></input>

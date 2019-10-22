@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 
 import logo from '../../Assets/img/Logo.jpg';
 import '../../Assets/css/Lançamento.css';
+import {Link} from 'react-router-dom';
 
 class Plataforma extends Component{
 
@@ -20,7 +21,8 @@ class Plataforma extends Component{
     listaAtualizada = () => {
         fetch('http://localhost:5000/api/plataformas', {
             headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-opflix')
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("usuario-opflix")
             }
         })
             .then(response => response.json())
@@ -34,7 +36,7 @@ class Plataforma extends Component{
             method: "POST",
             body: JSON.stringify({ plataforma1: this.state.plataforma1 }),
             headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-opflix'),
+                "Authorization": "Bearer " + localStorage.getItem("usuario-opflix"),
                 "Content-Type": "application/json"
             }
         })
@@ -53,7 +55,7 @@ class Plataforma extends Component{
             <nav>
                 <ul>
                     <li><img src={logo} alt=""/></li>
-                    <li><a href="#">DashBoard</a></li>
+                    <li><Link to='/dashboard'>DashBoard</Link></li>
                 </ul>
             </nav>
             <h1>Cadastrar Plataforma</h1>

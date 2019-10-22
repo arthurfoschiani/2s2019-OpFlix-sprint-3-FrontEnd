@@ -6,6 +6,7 @@ import imgemBackGround from '../../Assets/img/Retângulo 3.png';
 
 import Axios from 'axios';
 
+import {Link} from 'react-router-dom';
 class Login extends Component{
 
     constructor(){
@@ -36,7 +37,7 @@ class Login extends Component{
                 if(response.status === 200){
                     console.log(response.data.token);
                     localStorage.setItem("usuario-opflix",response.data.token);
-                    this.props.history.push('/');
+                    this.props.history.push('/dashboard');
                 }else{
                     console.log('vish deu ruim');
                 }
@@ -52,14 +53,10 @@ class Login extends Component{
             <div>
                 <nav>
                     <ul>
-                        <li><img src={logo} alt=""/></li>
+                        <li><Link to='/'><img src={logo} alt=""/></Link></li>
                         <li><a href="#">Login</a></li>
                     </ul>
                 </nav>
-                <div>
-                    <div>
-                        <img src={imgemBackGround} alt=""/>
-                    </div>
                     <div>
                         <form action="" onSubmit={this.efetuarLogin}>
                             <input type="text" placeholder="Email" onInput={this.atualizaEstadoEmail}></input>
@@ -68,10 +65,9 @@ class Login extends Component{
                             </p>
                             <input type="password" placeholder="Senha" onInput={this.atualizaEstadoSenha}></input>
                             <button>Entrar</button>
-                            <a href="#">Criar conta</a>
+                            <Link to='/cadastrarcliente'>Criar conta</Link>
                         </form>
                     </div>
-                </div>
             </div>
         )
     }

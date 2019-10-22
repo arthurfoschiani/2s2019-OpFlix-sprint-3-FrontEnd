@@ -1,15 +1,16 @@
 import React from 'react';
 
 import '../../Assets/css/Home.css';
-import logo from '../../Assets/img/Logo.jpg';
+import Logo from '../../Assets/img/Logo.jpg';
+import {Link} from 'react-router-dom';
 
 function App() {
   return (
     <div>
         <nav>
             <ul>
-                <li><img src={logo} alt=""/></li>
-                <li><a href="#" id="login">Login</a></li>
+                <li><img src={Logo} /></li>
+                <li><Link to='/login'>Login</Link></li>
             </ul>
         </nav>
         <div id="banner">

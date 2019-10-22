@@ -2,6 +2,8 @@ import React,{Component} from 'react';
 
 import logo from '../../Assets/img/Logo.jpg';
 
+import {Link} from 'react-router-dom';
+
 class Categoria extends Component {
 
     constructor(){
@@ -19,8 +21,9 @@ class Categoria extends Component {
     listaAtualizada = () => {
         fetch('http://localhost:5000/api/categorias', {
             headers:{
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-opflix')
-            }
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("usuario-opflix")
+            },
         })
             .then(response => response.json())
             .then(data => this.setState({ lista: data}));
@@ -33,7 +36,7 @@ class Categoria extends Component {
             method: "POST",
             body: JSON.stringify({ categoria1: this.state.categoria1 }),
             headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-opflix'),
+                "Authorization": "Bearer " + localStorage.getItem("usuario-opflix"),
                 "Content-Type": "application/json"
             }
         })
@@ -52,7 +55,7 @@ class Categoria extends Component {
                 <nav>
                     <ul>
                         <li><img src="img/Logo.jpg" alt="" /></li>
-                        <li><a href="#">DashBoard</a></li>
+                        <li><Link to='/dashboard'>DashBoard</Link></li>
                     </ul>
                 </nav>
                 <h1>Cadastrar Categoria</h1>

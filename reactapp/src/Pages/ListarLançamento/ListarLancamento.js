@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import Axios from 'axios';
 import logo from '../../Assets/img/Logo.jpg';
+import {Link} from 'react-router-dom';
 
 class ListarLancamento extends Component{
 
@@ -32,30 +33,25 @@ class ListarLancamento extends Component{
                 <nav>
                     <ul>
                         <li><img src={logo} alt=""/></li>
-                        <li><a href="#">DashBoard</a></li>
-                        <li><a href="#" id="lancamento">Lançamento</a></li>
+                        <li><Link to='dashboard'>DashBoard</Link></li>
                     </ul>
                 </nav>
+                <h1>Lançamentos</h1>
                 <div className="lanca">
-                    <form action="GET">
-                        <input type="text" value="" placeholder="Buscar"></input>
-                        <button>Filtrar</button>
-                    </form>
                     {this.state.lista.map(element => {
                         return(
                             <div id="infos">
                                 <ul>
                                     <li>Título: {element.nomeMidia}</li>
-                                    <li>Tipo da mídia: {element.idTipoMidiaNavigation.tipoMidia1}</li>
+                                    <li>Tipo da mídia: {element.idTipoMidiaNavigation != undefined ? element.idTipoMidiaNavigation.tipoMidia1 : 'Não tem Tipo.'}</li>
                                     <li>Sinopse: {element.sinopse}</li>
                                     <li>Tempo de duração: {element.tempoDuracao}</li>
-                                    <li>Categoria: {element.idCategoriaNavigation.categoria1}</li>
-                                    <li>Diretor: {element.idDiretorNavigation.diretor1}</li>
+                                    <li>Categoria: {element.idCategoriaNavigation != undefined ? element.idCategoriaNavigation.categoria1 : 'Não tem categoria.'}</li>
+                                    <li>Diretor: {element.idDiretorNavigation != undefined ? element.idDiretorNavigation.diretor1 : 'Não tem diretor.'}</li>
                                     <li>Data de lançamento: {element.dataLancamento}</li>
-                                    <li>Plataforma: {element.idPlataformaNavigation.plataforma1}</li>
+                                    <li>Plataforma: {element.idPlataformaNavigation != undefined ? element.idPlataformaNavigation.plataforma1 : 'Não tem plataforma.'}</li>
                                     <li>Descrição: {element.descricao}</li>
                                 </ul>
-                                <button>Favoritar</button>
                             </div>
                         );
                     })}
