@@ -36,7 +36,7 @@ class ListarLancamento extends Component{
                         <li><Link to='dashboard'>DashBoard</Link></li>
                     </ul>
                 </nav>
-                <h1>Lançamentos</h1>
+                <h2 id='h2_lancamento'>Lançamentos</h2>
                 <div className="lanca">
                     {this.state.lista.map(element => {
                         return(

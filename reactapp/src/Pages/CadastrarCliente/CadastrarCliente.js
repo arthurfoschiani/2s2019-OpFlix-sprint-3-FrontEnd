@@ -79,7 +79,7 @@ class CadastrarCliente extends Component{
 
     render() {
         return(
-            <div>
+            <div id='CadastrarCliente'>
                 <nav>
                     <ul>
                         <li><img src={logo} alt=""/></li>

@@ -5,11 +5,11 @@ import {Link} from 'react-router-dom';
 class DashBoardCliente extends Component{
     render(){
         return(
-            <div>
-                <p>Bem vindo, {parseJwt().Nome}{}</p>
-                <div>
-                    <div><Link to='/listarlancamentos'>Lançamentos</Link></div>
-                    <div><Link to='/cadastrarcliente'>Cadastrar usuário</Link></div>
+            <div id='DashBoardCliente'>
+                <p>Bem vindo(a), {parseJwt().Nome}{}</p>
+                <div class="quadradinhos">
+                    <Link class='quadrado' to='/listarlancamentos'>Lançamentos</Link>
+                    <Link class='quadrado' to='/cadastrarcliente'>Cadastrar usuário</Link>
                 </div>
             </div>
         )

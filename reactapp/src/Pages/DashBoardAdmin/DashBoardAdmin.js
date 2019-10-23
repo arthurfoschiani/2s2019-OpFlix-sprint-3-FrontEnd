@@ -5,15 +5,15 @@ import {Link} from 'react-router-dom';
 class DashBoardAdmn extends Component{
     render(){
         return(
-            <div>
-                <p>Bem vindo, {parseJwt().Nome}</p>
-                <div>
-                    <div><Link to='/categorias'>Cadastrar e visualizar categorias</Link></div>
-                    <div><Link to='/cadastraradministrador'>Cadastrar usuário</Link></div>
-                    <div><Link to='/cadastrarlancamento'>Cadastrar lançamento</Link></div>
-                    <div><Link to='/plataformas'>Cadastrar e visualizar plataformas</Link></div>
-                    <div><Link to='/listarlancamentos'>Visualizar lançamentos</Link></div>
-                    <div><Link to='/usuarios'>Visualizar usuários</Link></div>
+            <div id='DashBoardAdmin'>
+                <p>Bem vindo(a), {parseJwt().Nome}</p>
+                <div class="quadradinhos">
+                    <Link class='quadrado' to='/categorias'>Cadastrar e visualizar categorias</Link>
+                    <Link class='quadrado' to='/cadastraradministrador'>Cadastrar usuário</Link>
+                    <Link class='quadrado' to='/cadastrarlancamento'>Cadastrar lançamento</Link>
+                    <Link class='quadrado' to='/plataformas'>Cadastrar e visualizar plataformas</Link>
+                    <Link class='quadrado' to='/listarlancamentos'>Visualizar lançamentos</Link>
+                    <Link class='quadrado' to='/usuarios'>Visualizar usuários</Link>
                 </div>
             </div>
         )

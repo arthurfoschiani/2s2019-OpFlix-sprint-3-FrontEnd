@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 
 import logo from '../../Assets/img/Logo.jpg';
-import '../../Assets/css/Lançamento.css';
+import '../../Assets/css/style.css';
 import {Link} from 'react-router-dom';
 
 class Plataforma extends Component{
@@ -51,14 +51,14 @@ class Plataforma extends Component{
 
     render(){
         return(
-        <div>
+        <div id='Plataforma'>
             <nav>
                 <ul>
                     <li><img src={logo} alt=""/></li>
                     <li><Link to='/dashboard'>DashBoard</Link></li>
                 </ul>
             </nav>
-            <h1>Cadastrar Plataforma</h1>
+            <h2>Cadastrar Plataforma</h2>
             <form action="GET">
                 <input type="text" value="" placeholder="Cadastrar" value={this.state.nome} onInput={this.atualizarNome}></input>
                 <button onClick={this.adicionaItem}>Cadastrar</button>

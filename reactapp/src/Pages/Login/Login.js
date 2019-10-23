@@ -2,11 +2,13 @@ import React,{Component} from 'react';
 
 import logo from '../../Assets/img/Logo.jpg';
 
-import imgemBackGround from '../../Assets/img/Retângulo 3.png';
-
 import Axios from 'axios';
 
 import {Link} from 'react-router-dom';
+
+import '../../Assets/css/style.css';
+
+
 class Login extends Component{
 
     constructor(){
@@ -50,22 +52,24 @@ class Login extends Component{
 
     render () {
         return(
-            <div>
+            <div id='Login'>
                 <nav>
                     <ul>
                         <li><Link to='/'><img src={logo} alt=""/></Link></li>
                         <li><a href="#">Login</a></li>
                     </ul>
                 </nav>
-                    <div>
+                    <div class='infos'> 
                         <form action="" onSubmit={this.efetuarLogin}>
                             <input type="text" placeholder="Email" onInput={this.atualizaEstadoEmail}></input>
                             <p className="text__login" style={{color: "red", textAlign: "center"}}>
                                 {this.state.erro}
                             </p>
                             <input type="password" placeholder="Senha" onInput={this.atualizaEstadoSenha}></input>
-                            <button>Entrar</button>
-                            <Link to='/cadastrarcliente'>Criar conta</Link>
+                            <div class='separar'>
+                                <button>Entrar</button>
+                                <Link to='/cadastrarcliente'>Criar conta</Link>
+                            </div>
                         </form>
                     </div>
             </div>

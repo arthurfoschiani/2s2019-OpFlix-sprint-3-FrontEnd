@@ -113,7 +113,7 @@ class CadastrarLancamento extends Component {
     render() {
         return (
             <div>
-                <h1>Cadastrar Lançamento</h1>
+                <h2>Cadastrar Lançamento</h2>
                 <form action="">
                     <input type="text" placeholder="Titulo" onInput={this.atualizarNome}></input>
                     <input type="text" placeholder="Sinopse" onInput={this.atualizarSinopse}></input>

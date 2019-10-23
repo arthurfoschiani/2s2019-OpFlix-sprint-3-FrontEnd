@@ -51,14 +51,14 @@ class Categoria extends Component {
 
     render () {
         return(
-            <div>
+            <div id='Categoria'>
                 <nav>
                     <ul>
-                        <li><img src="img/Logo.jpg" alt="" /></li>
+                        <li><img src={logo} alt="" /></li>
                         <li><Link to='/dashboard'>DashBoard</Link></li>
                     </ul>
                 </nav>
-                <h1>Cadastrar Categoria</h1>
+                <h2>Cadastrar Categoria</h2>
                 <form action="GET">
                     <input type="text" value="" placeholder="Cadastrar" value={this.state.nome} onInput={this.atualizarNome}></input>
                     <button onClick={this.adicionaItem}>Cadastrar</button>
