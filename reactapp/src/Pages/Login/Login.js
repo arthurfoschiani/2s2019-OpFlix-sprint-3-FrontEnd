@@ -59,14 +59,14 @@ class Login extends Component{
                         <li><a href="#">Login</a></li>
                     </ul>
                 </nav>
-                    <div class='infos'> 
+                    <div className='infos'> 
                         <form action="" onSubmit={this.efetuarLogin}>
                             <input type="text" placeholder="Email" onInput={this.atualizaEstadoEmail}></input>
                             <p className="text__login" style={{color: "red", textAlign: "center"}}>
                                 {this.state.erro}
                             </p>
                             <input type="password" placeholder="Senha" onInput={this.atualizaEstadoSenha}></input>
-                            <div class='separar'>
+                            <div className='separar'>
                                 <button>Entrar</button>
                                 <Link to='/cadastrarcliente'>Criar conta</Link>
                             </div>

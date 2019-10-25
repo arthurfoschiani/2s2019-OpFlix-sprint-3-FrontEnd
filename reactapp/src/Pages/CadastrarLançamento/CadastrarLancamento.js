@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import logo from '../../Assets/img/Logo.jpg';
 import {Link} from 'react-router-dom';
 
 class CadastrarLancamento extends Component {
@@ -66,7 +67,14 @@ class CadastrarLancamento extends Component {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-opflix')
             }
         })
-            .then(response => { console.log(response) })
+            .then(response => {
+                if(response.status === 200){
+                    console.log(response);
+                    this.props.history.push('/listarlancamentos');
+                }else{
+                    console.log('Não foi possível realizar esta ação');
+                }
+            })
             .catch(erro => {
                 this.setState({ erro: "Não foi possível cadastrar" });
                 console.log('error', erro);
@@ -112,7 +120,13 @@ class CadastrarLancamento extends Component {
 
     render() {
         return (
-            <div>
+            <div id='CadastrarLancamento'>
+                <nav>
+                    <ul>
+                        <li><img src={logo} alt=""/></li>
+                        <li><Link to='/login'>Login</Link></li>
+                    </ul>
+                </nav>
                 <h2>Cadastrar Lançamento</h2>
                 <form action="">
                     <input type="text" placeholder="Titulo" onInput={this.atualizarNome}></input>
@@ -121,20 +135,20 @@ class CadastrarLancamento extends Component {
                     <input type="text" placeholder="Data de lançamento" onChange={this.atualizarDataLancamento} ></input>
                     <input type="text" placeholder="Descrição" onInput={this.atualizarDescricao}></input>
                     <select onInput={this.atalizarDiretor} values={this.state.diretorSelecionado}>
-                        <option selected>Diretor...</option>
+                        <option selected className='opcao'>Diretor...</option>
                         <option value='1'>David Crane</option>
                         <option value='2'>George Lucas</option>
                         <option value='3'>Adam Horowitz</option>
                     </select>
                     <select onInput={this.atualizarTipoMidia} values={this.state.tipoMidiaSelecionado}>
-                        <option selected>Tipo da mídia...</option>
+                        <option selected className='opcao'>Tipo da mídia...</option>
                         <option value='1'>Série</option>
                         <option value='2'>Filme</option>
                         <option value='3'>Anime</option>
                         <option value='4'>Desenho</option>
                     </select>
                     <select onInput={this.atalizarCategoria} value={this.state.categoriaSelecionada}>
-                        <option selected>Categoria...</option>
+                        <option selected className='opcao'>Categoria...</option>
                         {this.state.categoria.map(element => {
                             return (
                                 <option value={element.idCategoria}>{element.categoria1}</option>
@@ -142,7 +156,7 @@ class CadastrarLancamento extends Component {
                         })}
                     </select>
                     <select onChange={this.atalizarPlataforma} value={this.state.plataformaSelecionada}>
-                        <option selected>Plataforma...</option>
+                        <option selected className='opcao'>Plataforma...</option>
 
                         {this.state.plataforma.map(element => {
                             return (

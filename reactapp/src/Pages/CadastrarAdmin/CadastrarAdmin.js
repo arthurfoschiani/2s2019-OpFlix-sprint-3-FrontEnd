@@ -37,7 +37,14 @@ class CadastrarAdmin extends Component{
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-opflix')
             }
         })
-        .then(response =>{console.log(response)})
+        .then(response => {
+            if(response.status === 200){
+                console.log(response);
+                this.props.history.push('/usuarios');
+            }else{
+                console.log('Não foi possível realizar esta ação');
+            }
+        })
         .catch(erro => { 
             this.setState({ erro: "Não foi possível cadastrar"});
             console.log(erro);
@@ -75,7 +82,7 @@ class CadastrarAdmin extends Component{
 
     render() {
         return(
-            <div>
+            <div id='CadastrarAdmin'>
                 <nav>
                     <ul>
                         <li><img src={logo} alt=""/></li>

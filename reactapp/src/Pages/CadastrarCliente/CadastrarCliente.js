@@ -45,7 +45,14 @@ class CadastrarCliente extends Component{
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-opflix')
             }
         })
-        .then(response =>{console.log(response)})
+        .then(response => {
+            if(response.status === 200){
+                console.log(response);
+                this.props.history.push('/login');
+            }else{
+                console.log('Não foi possível realizar esta ação');
+            }
+        })
         .catch(erro => { 
             this.setState({ erro: "Não foi possível cadastrar"});
             console.log(erro);

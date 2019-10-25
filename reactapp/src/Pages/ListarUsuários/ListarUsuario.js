@@ -29,13 +29,14 @@ class ListarUsuario extends Component{
 
     render(){
         return(
-            <div>
+            <div id='Usuarios'>
                 <nav>
                     <ul>
                         <li><img src={logo} alt=""/></li>
                         <li><Link to='/login'>Login</Link></li>
                     </ul>
                 </nav>
+                <h2>Usuários</h2>
                 <div>
                     <table>
                         <thead>

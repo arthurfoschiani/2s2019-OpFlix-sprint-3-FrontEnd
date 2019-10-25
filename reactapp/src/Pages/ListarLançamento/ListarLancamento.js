@@ -29,14 +29,14 @@ class ListarLancamento extends Component{
 
     render() {
         return(
-            <div>
+            <div id='ListarLancamento'>
                 <nav>
                     <ul>
                         <li><img src={logo} alt=""/></li>
                         <li><Link to='dashboard'>DashBoard</Link></li>
                     </ul>
                 </nav>
-                <h2 id='h2_lancamento'>Lançamentos</h2>
+                <h2 >Lançamentos</h2>
                 <div className="lanca">
                     {this.state.lista.map(element => {
                         return(

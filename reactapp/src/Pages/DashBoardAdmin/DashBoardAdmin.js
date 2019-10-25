@@ -7,13 +7,13 @@ class DashBoardAdmn extends Component{
         return(
             <div id='DashBoardAdmin'>
                 <p>Bem vindo(a), {parseJwt().Nome}</p>
-                <div class="quadradinhos">
-                    <Link class='quadrado' to='/categorias'>Cadastrar e visualizar categorias</Link>
-                    <Link class='quadrado' to='/cadastraradministrador'>Cadastrar usuário</Link>
-                    <Link class='quadrado' to='/cadastrarlancamento'>Cadastrar lançamento</Link>
-                    <Link class='quadrado' to='/plataformas'>Cadastrar e visualizar plataformas</Link>
-                    <Link class='quadrado' to='/listarlancamentos'>Visualizar lançamentos</Link>
-                    <Link class='quadrado' to='/usuarios'>Visualizar usuários</Link>
+                <div className="quadradinhos">
+                    <Link className='quadrado' to='/categorias'>Cadastrar e visualizar categorias</Link>
+                    <Link className='quadrado' to='/cadastraradministrador'>Cadastrar usuário</Link>
+                    <Link className='quadrado' to='/cadastrarlancamento'>Cadastrar lançamento</Link>
+                    <Link className='quadrado' to='/plataformas'>Cadastrar e visualizar plataformas</Link>
+                    <Link className='quadrado' to='/listarlancamentos'>Visualizar lançamentos</Link>
+                    <Link className='quadrado' to='/usuarios'>Visualizar usuários</Link>
                 </div>
             </div>
         )

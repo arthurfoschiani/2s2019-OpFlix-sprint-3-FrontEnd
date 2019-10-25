@@ -7,9 +7,9 @@ class DashBoardCliente extends Component{
         return(
             <div id='DashBoardCliente'>
                 <p>Bem vindo(a), {parseJwt().Nome}{}</p>
-                <div class="quadradinhos">
-                    <Link class='quadrado' to='/listarlancamentos'>Lançamentos</Link>
-                    <Link class='quadrado' to='/cadastrarcliente'>Cadastrar usuário</Link>
+                <div className="quadradinhos">
+                    <Link className='quadrado' to='/listarlancamentos'>Lançamentos</Link>
+                    <Link className='quadrado' to='/cadastrarcliente'>Cadastrar usuário</Link>
                 </div>
             </div>
         )
