@@ -80,6 +80,11 @@ class CadastrarAdmin extends Component{
         console.log(this.state)
     }
 
+    Logout = (event) => {
+        localStorage.removeItem("usuario-opflix");
+        this.props.history.push('/');
+    }
+
     render() {
         return(
             <div id='CadastrarAdmin'>
@@ -87,6 +92,8 @@ class CadastrarAdmin extends Component{
                     <ul>
                         <li><img src={logo} alt=""/></li>
                         <li><Link to='/login'>Login</Link></li>
+                        <li><Link to='/dashboard'>DashBoard</Link></li>
+                        <li><Link onClick={this.Logout} to='/'>Sair</Link></li>
                     </ul>
                 </nav>
                 <div>

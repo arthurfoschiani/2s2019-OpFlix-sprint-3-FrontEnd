@@ -83,6 +83,8 @@ class CadastrarCliente extends Component{
         this.setState({DataNascimento: event.target.value})
         console.log(this.state);
     }
+    
+    
 
     render() {
         return(

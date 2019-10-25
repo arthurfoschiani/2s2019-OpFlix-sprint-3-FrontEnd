@@ -27,13 +27,19 @@ class ListarUsuario extends Component{
             });
         }
 
+        Logout = (event) => {
+            localStorage.removeItem("usuario-opflix");
+            this.props.history.push('/');
+        }
+
     render(){
         return(
             <div id='Usuarios'>
                 <nav>
                     <ul>
                         <li><img src={logo} alt=""/></li>
-                        <li><Link to='/login'>Login</Link></li>
+                        <li><Link to='/dashboard'>DashBoard</Link></li>
+                        <li><Link onClick={this.Logout} to='/'>Sair</Link></li>
                     </ul>
                 </nav>
                 <h2>Usuários</h2>
