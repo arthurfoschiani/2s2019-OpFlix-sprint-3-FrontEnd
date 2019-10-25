@@ -102,7 +102,7 @@ class CadastrarCliente extends Component{
                             <input type="password" placeholder="Senha" onInput={this.atualizarSenha}></input>
                             <input type="text" placeholder="Telefone" onInput={this.atualizarTelefone}></input>
                             <input type="text" placeholder="CPF" onInput={this.atualizarCPF}></input>
-                            <input type="text" placeholder="Data de nascimento" onInput={this.atualizarData}></input>
+                            <input type="date" placeholder="Data de nascimento" onInput={this.atualizarData}></input>
                             <button onClick={this.adicionarItem}>Cadastrar</button>
                         </form>
                     </div>

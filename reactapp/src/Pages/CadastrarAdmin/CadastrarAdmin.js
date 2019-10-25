@@ -104,7 +104,7 @@ class CadastrarAdmin extends Component{
                             <input type="password" placeholder="Senha" onInput={this.atualizarSenha}></input>
                             <input type="text" placeholder="Telefone" onInput={this.atualizarTelefone}></input>
                             <input type="text" placeholder="CPF" onInput={this.atualizarCPF}></input>
-                            <input type="text" placeholder="Data de nascimento" onInput={this.atualizarData}></input>
+                            <input type="date" placeholder="Data de nascimento" onInput={this.atualizarData}></input>
                             <select onInput={this.atalizarTipoUsuario}> 
                                 <option selected>Escolha...</option>
                                 <option value='1'>Administrador</option>

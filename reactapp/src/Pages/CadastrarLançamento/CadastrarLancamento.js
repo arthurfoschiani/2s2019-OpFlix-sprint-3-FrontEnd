@@ -138,7 +138,7 @@ class CadastrarLancamento extends Component {
                     <input type="text" placeholder="Titulo" onInput={this.atualizarNome}></input>
                     <input type="text" placeholder="Sinopse" onInput={this.atualizarSinopse}></input>
                     <input type="text" placeholder="Tempo de duração" onInput={this.atualizarTempoDuração}></input>
-                    <input type="text" placeholder="Data de lançamento" onChange={this.atualizarDataLancamento} ></input>
+                    <input type="date" placeholder="Data de lançamento" onChange={this.atualizarDataLancamento} ></input>
                     <input type="text" placeholder="Descrição" onInput={this.atualizarDescricao}></input>
                     <select onInput={this.atalizarDiretor} values={this.state.diretorSelecionado}>
                         <option selected className='opcao'>Diretor...</option>
