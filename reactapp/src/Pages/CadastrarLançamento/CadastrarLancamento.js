@@ -25,7 +25,7 @@ class CadastrarLancamento extends Component {
     }
 
     componentDidMount() {
-        Axios.get('http://localhost:5000/api/categorias', {
+        Axios.get('http://192.168.3.14:5000/api/categorias', {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-opflix')  
             }})
@@ -35,7 +35,7 @@ class CadastrarLancamento extends Component {
             .catch(erro => {
                 console.log(erro);
             });
-        Axios.get('http://localhost:5000/api/plataformas', {
+        Axios.get('http://192.168.3.14:5000/api/plataformas', {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-opflix')  
             }})
@@ -50,7 +50,7 @@ class CadastrarLancamento extends Component {
     adicionarItem = (event) => {
         event.preventDefault();
         console.log('state', this.state);
-        Axios.post('http://localhost:5000/api/lancamentos', {
+        Axios.post('http://192.168.3.14:5000/api/lancamentos', {
             nomeMidia: this.state.nomeMidia,
             sinopse: this.state.sinopse,
             tempoDuracao: this.state.tempoDuracao,

@@ -10,6 +10,11 @@ class DashBoardAdmn extends Component{
         this.props.history.push('/');
     }
 
+    getParsedNome(nome){
+        nome = String(nome).replace('Ã¡', 'á');
+        return nome;
+    }
+
     render(){
         return(
             <div id='DashBoardAdmin'>
@@ -19,7 +24,7 @@ class DashBoardAdmn extends Component{
                         <li><Link onClick={this.Logout} to='/'>Sair</Link></li>
                     </ul>
                 </nav>
-                <p>Bem vindo(a), {parseJwt().Nome}</p>
+                <p>Bem vindo(a), {this.getParsedNome(parseJwt().Nome)}</p>
                 <div className="quadradinhos">
                     <Link className='quadrado' to='/categorias'>Cadastrar e visualizar categorias</Link>
                     <Link className='quadrado' to='/cadastraradministrador'>Cadastrar usuário</Link>

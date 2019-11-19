@@ -22,7 +22,7 @@ class CadastrarAdmin extends Component{
     adicionarItem = (event) => {
         event.preventDefault();
         console.log(this.state.li);
-        Axios.post('http://localhost:5000/api/usuarios', {
+        Axios.post('http://192.168.3.14:5000/api/usuarios', {
             NomeUsuario: this.state.Nome, 
             EmailUsuario: this.state.Email,
             SenhaUsuario: this.state.Senha,

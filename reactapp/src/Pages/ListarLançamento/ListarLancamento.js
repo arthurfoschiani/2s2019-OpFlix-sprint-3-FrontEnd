@@ -13,7 +13,7 @@ class ListarLancamento extends Component{
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/api/lancamentos',{
+        Axios.get('http://192.168.3.14:5000/api/lancamentos',{
             headers: {
                 Authorization: 'Bearer '+localStorage.getItem('usuario-opflix')
             }
@@ -30,6 +30,12 @@ class ListarLancamento extends Component{
     Logout = (event) => {
         localStorage.removeItem("usuario-opflix");
         this.props.history.push('/');
+    }
+
+    getParsedDate(date){
+        date = String(date).split('T');
+        var days = String(date[0]).split('-');
+        return [parseInt(days[2]),"/", parseInt(days[1]),"/", parseInt(days[0])];
     }
 
     render() {
@@ -54,7 +60,7 @@ class ListarLancamento extends Component{
                                     <li>Tempo de duração: {element.tempoDuracao}</li>
                                     <li>Categoria: {element.idCategoriaNavigation != undefined ? element.idCategoriaNavigation.categoria1 : 'Não tem categoria.'}</li>
                                     <li>Diretor: {element.idDiretorNavigation != undefined ? element.idDiretorNavigation.diretor1 : 'Não tem diretor.'}</li>
-                                    <li>Data de lançamento: {element.dataLancamento}</li>
+                                    <li>Data de lançamento: {this.getParsedDate(element.dataLancamento)}</li>
                                     <li>Plataforma: {element.idPlataformaNavigation != undefined ? element.idPlataformaNavigation.plataforma1 : 'Não tem plataforma.'}</li>
                                     <li>Descrição: {element.descricao}</li>
                                 </ul>

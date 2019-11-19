@@ -13,7 +13,7 @@ class ListarUsuario extends Component{
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:5000/api/usuarios',{
+        Axios.get('http://192.168.3.14:5000/api/usuarios',{
             headers: {
                 Authorization: 'Bearer '+localStorage.getItem('usuario-opflix')
             }
@@ -27,10 +27,16 @@ class ListarUsuario extends Component{
             });
         }
 
-        Logout = (event) => {
-            localStorage.removeItem("usuario-opflix");
-            this.props.history.push('/');
-        }
+    Logout = (event) => {
+        localStorage.removeItem("usuario-opflix");
+        this.props.history.push('/');
+    }
+
+    getParsedDate(date){
+        date = String(date).split('T');
+        var days = String(date[0]).split('-');
+        return [parseInt(days[2]),"/", parseInt(days[1]),"/", parseInt(days[0])];
+    }
 
     render(){
         return(
@@ -65,7 +71,7 @@ class ListarUsuario extends Component{
                                         <td>{element.emailUsuario}</td>
                                         <td>{element.telefone}</td>
                                         <td>{element.cpf}</td>
-                                        <td>{element.dataDeNascimento}</td>
+                                        <td>{this.getParsedDate(element.dataDeNascimento)}</td>
                                         <td>{element.tipoUsuarioNavigation.tipoUsuario1}</td>
                                     </tr>
                                 )
