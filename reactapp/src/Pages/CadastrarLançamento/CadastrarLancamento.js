@@ -20,7 +20,9 @@ class CadastrarLancamento extends Component {
             plataformaSelecionada: '',
             categoriaSelecionado: '',
             tipoMidiaSelecionado: '',
-            diretorSelecionado: ''
+            diretorSelecionado: '',
+            latitude: '',
+            longitude: ''
         };
     }
 
@@ -50,23 +52,43 @@ class CadastrarLancamento extends Component {
     adicionarItem = (event) => {
         event.preventDefault();
         console.log('state', this.state);
-        Axios.post('http://192.168.3.14:5000/api/lancamentos', {
-            nomeMidia: this.state.nomeMidia,
-            sinopse: this.state.sinopse,
-            tempoDuracao: this.state.tempoDuracao,
-            dataLancamento: this.state.dataLancamento,
-            descricao: this.state.descricao,
-            idTipoMidia: this.state.tipoMidiaSelecionado,
-            idCategoria: this.state.categoriaSelecionada,
-            idDiretor: this.state.diretorSelecionado,
-            idPlataforma: this.state.plataformaSelecionada
-        }, {
-            headers: {
-                'Content-Type' : 'application/json',
-                'Accept' : 'application/json',
-                Authorization: 'Bearer ' + localStorage.getItem('usuario-opflix')
-            }
-        })
+
+        if (this.state.latitude !== null && this.state.longitude !== null) {
+
+            Axios.post('http://192.168.3.14:5000/api/localizacoes', {
+                latitude: this.state.latitude,
+                longitude: this.state.longitude,
+                lancamento: {
+                    nomeMidia: this.state.nomeMidia,
+                    dataLancamento: this.state.dataLancamento
+                }
+            }, {
+                headers: {
+                    'Content-Type' : 'application/json',
+                    'Accept' : 'application/json',
+                    Authorization: 'Bearer ' + localStorage.getItem('usuario-opflix')
+                }
+            })
+            .then(response => console.log(response.status))
+            .catch(error => console.log(error))
+            
+            Axios.post('http://192.168.3.14:5000/api/lancamentos', {
+                nomeMidia: this.state.nomeMidia,
+                sinopse: this.state.sinopse,
+                tempoDuracao: this.state.tempoDuracao,
+                dataLancamento: this.state.dataLancamento,
+                descricao: this.state.descricao,
+                idTipoMidia: this.state.tipoMidiaSelecionado,
+                idCategoria: this.state.categoriaSelecionada,
+                idDiretor: this.state.diretorSelecionado,
+                idPlataforma: this.state.plataformaSelecionada
+            }, {
+                headers: {
+                    'Content-Type' : 'application/json',
+                    'Accept' : 'application/json',
+                    Authorization: 'Bearer ' + localStorage.getItem('usuario-opflix')
+                }
+            })
             .then(response => {
                 if(response.status === 200){
                     console.log(response);
@@ -79,7 +101,8 @@ class CadastrarLancamento extends Component {
                 this.setState({ erro: "Não foi possível cadastrar" });
                 console.log('error', erro);
             });
-    }
+        }
+        }
 
     atualizarNome = (event) => {
         this.setState({ nomeMidia: event.target.value })
@@ -116,6 +139,14 @@ class CadastrarLancamento extends Component {
     atalizarPlataforma = (event) => {
         this.setState({plataformaSelecionada: event.target.value})
         console.log(event.target.value)
+    }
+    atualizarLatitude = (event) => {
+        this.setState({ latitude: event.target.value })
+        console.log(this.state);
+    }
+    atualizarLongitude = (event) => {
+        this.setState({ longitude: event.target.value })
+        console.log(this.state);
     }
 
     Logout = (event) => {
@@ -170,6 +201,8 @@ class CadastrarLancamento extends Component {
                             )
                         })}
                     </select>
+                    <input type="text" placeholder="Latitude" onInput={this.atualizarLatitude}></input>
+                    <input type="text" placeholder="Longitude" onInput={this.atualizarLongitude}></input>
                     <button onClick={this.adicionarItem}>Cadastrar</button>
                 </form>
             </div>
