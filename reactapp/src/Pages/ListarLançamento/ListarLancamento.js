@@ -54,6 +54,7 @@ class ListarLancamento extends Component{
                         return(
                             <div id="infos">
                                 <ul>
+                                    <li>Id: {element.idLancamento}</li>
                                     <li>Título: {element.nomeMidia}</li>
                                     <li>Tipo da mídia: {element.idTipoMidiaNavigation != undefined ? element.idTipoMidiaNavigation.tipoMidia1 : 'Não tem Tipo.'}</li>
                                     <li>Sinopse: {element.sinopse}</li>

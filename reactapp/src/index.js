@@ -14,6 +14,7 @@ import ListarUsuarios from './Pages/ListarUsuários/ListarUsuario';
 import NaoEncontrado from './Pages/NãoEncontrado/NaoEncontrado';
 import DashBoardAdmin from './Pages/DashBoardAdmin/DashBoardAdmin';
 import DashBoardCliente from './Pages/DashBoardCliente/DashBoardCliente';
+import Localizacao from './Pages/Localizacao/Localizacao';
 import * as serviceWorker from './serviceWorker';
 import { parseJwt } from './Services/auth';
 
@@ -76,6 +77,7 @@ const routing = (
                 <Route path='/cadastrarcliente' component={CadastrarCliente}/>
                 <PermissaoADM path='/cadastraradministrador' component={CadastrarAdmin}/>
                 <QualquerUsuario path='/listarlancamentos' component={ListarLancamentos}/>
+                <QualquerUsuario path='/localizacao' component={Localizacao}/>
                 <PermissaoADM path='/cadastrarlancamento' component={CadastrarLancamento}/>
                 <PermissaoADM path='/usuarios' component={ListarUsuarios}/>
                 <RotaPrivada path='/dashboard' component={DashBoardCliente}/>

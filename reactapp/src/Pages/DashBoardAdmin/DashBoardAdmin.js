@@ -32,6 +32,7 @@ class DashBoardAdmn extends Component{
                     <Link className='quadrado' to='/plataformas'>Cadastrar e visualizar plataformas</Link>
                     <Link className='quadrado' to='/listarlancamentos'>Visualizar lançamentos</Link>
                     <Link className='quadrado' to='/usuarios'>Visualizar usuários</Link>
+                    <Link className='quadrado' to='/localizacao'>Localização dos lançamentos</Link>
                 </div>
             </div>
         )
