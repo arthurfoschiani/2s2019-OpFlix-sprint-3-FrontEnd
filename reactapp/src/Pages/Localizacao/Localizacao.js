@@ -8,7 +8,10 @@ class Localizacoes extends Component {
     constructor() {
         super();
         this.state = {
-            Localizacoes: []
+            Localizacoes: [],
+            showingInfoWindow: false,
+            activeMarker: {},
+            selectedPlace: {},
         }
     }
 
@@ -26,7 +29,7 @@ class Localizacoes extends Component {
 
     pin = () => {
         let pin = [];
-        this.state.Localizacoes.forEach(element => {
+        this.state.Localizacoes.map(element => {
             pin.push(
                 <Marker title={element.lancamento.nomeMidia} position={{ lat: element.latitude, lng: element.longitude }}/>
             )
